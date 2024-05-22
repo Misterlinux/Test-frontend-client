@@ -129,7 +129,7 @@ function Primo(){
       }
     }
 
-    let risposta = await fetch("hhttps://serving.onrender.com/togli", posta)
+    let risposta = await fetch("https://serving.onrender.com/togli", posta)
     console.log( risposta.statusText )
     
     let json = await risposta.json()
