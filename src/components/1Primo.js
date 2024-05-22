@@ -36,7 +36,7 @@ function Primo(){
       }
     }
     
-    let response = await fetch("http://localhost:3000/aggiungi", richiesta)
+    let response = await fetch("https://serving.onrender.com/aggiungi", richiesta)
 
     if( response.ok ){
       console.log( response )
@@ -69,7 +69,7 @@ function Primo(){
       }
     }
 
-    fetch("http://localhost:3000/aggiungi", richiesta)
+    fetch("https://serving.onrender.com/aggiungi", richiesta)
       .then( (response) => {
         console.log( response )
 
@@ -96,7 +96,7 @@ function Primo(){
       }
     }
 
-    let segnale = await fetch("http://localhost:3000/vedo", manda)
+    let segnale = await fetch("https://serving.onrender.com/vedo", manda)
     let json = await segnale.json()
 
     if(json){
@@ -129,10 +129,26 @@ function Primo(){
       }
     }
 
-    let risposta = await fetch("http://localhost:3000/togli", posta)
+    let risposta = await fetch("hhttps://serving.onrender.com/togli", posta)
     console.log( risposta.statusText )
     
     let json = await risposta.json()
+    console.log( json )
+  }
+
+  async function manda(){
+    console.log( "spedito" )
+
+    let metti = {
+      method: "GET", 
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }
+
+    let richiesta = await fetch("https://serving.onrender.com/metro", metti)
+    let json = await richiesta.text()
     console.log( json )
   }
 
@@ -140,6 +156,10 @@ function Primo(){
     <div className="d-flex row col-8 mx-auto">
       <div className="d-flex flex-column justify-content-center align-items-center">
         <h3>You can't but higher chance</h3>
+
+        <button className="btn btn-warning" onClick={ manda }>
+          mandatario
+        </button>
 
         <form onSubmit={mandato1} className="row col-12 d-flex align-items-center">
 
